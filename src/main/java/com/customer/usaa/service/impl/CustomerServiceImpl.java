@@ -61,7 +61,7 @@ public class CustomerServiceImpl implements CustomerService {
 
 	@Override
 	public CustomerModel updateCustomer(CustomerModel customerModel, long customerId) {
-		Customer customer = customerRepo.findById(customerId).orElseThrow(()->new ResourceNotFoundException("Customer","customerId",customerId));
+		Customer customer = customerRepo.findById(customerId).orElseThrow(()->new ResourceNotFoundException("customer","customerId",customerId));
 		customer.setName(customerModel.getName());
 		customer.setAddress(customerModel.getAddress());
 		customer.setCompanyName(customerModel.getCompanyName());
@@ -73,7 +73,7 @@ public class CustomerServiceImpl implements CustomerService {
 
 	@Override
 	public void deleteCustomerById(long customerId) {
-		Customer customer = customerRepo.findById(customerId).orElseThrow(()->new ResourceNotFoundException("Customer","customerId",customerId));
+		Customer customer = customerRepo.findById(customerId).orElseThrow(()->new ResourceNotFoundException("customer","customerId",customerId));
 		customerRepo.delete(customer);
 	}
 
