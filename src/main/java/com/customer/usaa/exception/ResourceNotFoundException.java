@@ -1,17 +1,17 @@
 package com.customer.usaa.exception;
 
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
+
+@SuppressWarnings("serial")
 @ResponseStatus(value = HttpStatus.NOT_FOUND)
-@ResponseBody
-public class CustomerNotFoundException extends RuntimeException {
+public class ResourceNotFoundException extends RuntimeException {
 	
 	    private String resourceName;
 	    private String fieldName;
 	    private long fieldValue;
 
-	    public CustomerNotFoundException(String resourceName, String fieldName, long fieldValue) {
+	    public ResourceNotFoundException(String resourceName, String fieldName, long fieldValue) {
 	        super(String.format("%s not found with %s : '%s'", resourceName, fieldName, fieldValue)); // Customer not found with id : 1
 	        this.resourceName = resourceName;
 	        this.fieldName = fieldName;

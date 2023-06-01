@@ -7,7 +7,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import com.customer.usaa.entity.Customer;
-import com.customer.usaa.exception.CustomerNotFoundException;
+import com.customer.usaa.exception.ResourceNotFoundException;
 import com.customer.usaa.model.CustomerModel;
 import com.customer.usaa.repository.CustomerRepository;
 import com.customer.usaa.service.CustomerService;
@@ -35,7 +35,7 @@ public class CustomerServiceImpl implements CustomerService {
 
 	@Override
 	public CustomerModel getCustomerById(long customerId) {
-		Customer customer = customerRepo.findById(customerId).orElseThrow(()->new CustomerNotFoundException("Customer","customerId",customerId));
+		Customer customer = customerRepo.findById(customerId).orElseThrow(()->new ResourceNotFoundException("Customer","customerId",customerId));
 		return mapToModel(customer);
 	}
 
@@ -61,7 +61,7 @@ public class CustomerServiceImpl implements CustomerService {
 
 	@Override
 	public CustomerModel updateCustomer(CustomerModel customerModel, long customerId) {
-		Customer customer = customerRepo.findById(customerId).orElseThrow(()->new CustomerNotFoundException("Customer","customerId",customerId));
+		Customer customer = customerRepo.findById(customerId).orElseThrow(()->new ResourceNotFoundException("Customer","customerId",customerId));
 		customer.setName(customerModel.getName());
 		customer.setAddress(customerModel.getAddress());
 		customer.setCompanyName(customerModel.getCompanyName());
@@ -73,7 +73,7 @@ public class CustomerServiceImpl implements CustomerService {
 
 	@Override
 	public void deleteCustomerById(long customerId) {
-		Customer customer = customerRepo.findById(customerId).orElseThrow(()->new CustomerNotFoundException("Customer","customerId",customerId));
+		Customer customer = customerRepo.findById(customerId).orElseThrow(()->new ResourceNotFoundException("Customer","customerId",customerId));
 		customerRepo.delete(customer);
 	}
 

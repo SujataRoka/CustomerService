@@ -1,5 +1,6 @@
 package com.customer.usaa.entity;
 
+
 import java.time.LocalDate;
 
 import javax.persistence.Entity;
@@ -31,8 +32,13 @@ public class Customer {
 	    
 	    private long phoneNumber;
 	    
-	    private LocalDate createdTimestamp;
-	    
-	    private LocalDate updatedTimestamp;
-	    
+		private LocalDate createdDate;
+		
+		private LocalDate updatedDate;
+		
+		private String createdBy;
+		
+		private String updatedBy;
+
+	    	    
 }
